@@ -2,7 +2,7 @@ import './App.css';
 import Nav from './components/Nav/Nav';
 import Profile from './components/Profile/Profile';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Registration from "./components/Registration/Registration";
+import Registration from './components/Registration/Registration'
 function App() {
   return (
     <BrowserRouter >
