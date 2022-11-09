@@ -1,0 +1,85 @@
+.title {
+    font-family: 'SANDBOX', sans-serif;
+    font-weight: 400;
+    font-size: 1.8em;
+    margin-left: 18%;
+}
+
+.signInContainer{
+    margin-left: 30%;
+    margin-top: 5%;
+    border: 1px solid gainsboro;
+    width: 400px;
+}
+
+.login{
+    margin-left: 18%;
+}
+
+.login>input{
+    width: 210px;
+    height: 30px;
+    outline: none;
+    border: 1px solid gainsboro;
+    padding-left: 10px;
+    padding-right: 30px;
+}
+
+.password{
+    margin-left: 18%;
+    margin-top: 1.5%;
+}
+
+.password>input{
+    width: 210px;
+    height: 30px;
+    outline: none;
+    border: 1px solid gainsboro;
+    padding-left: 10px;
+    padding-right: 30px;
+}
+
+.signInButton{
+    background-color: cornflowerblue ;
+    margin-top: 4% ;
+    margin-left: 18%;
+    width: 250px;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signInButton>span{
+    color: white;
+    padding-top: 7px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.helpButtons{
+    margin-top: 10%;
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 5%;
+    cursor: pointer;
+}
+
+.signUpContainer{
+    margin-left: 30%;
+    margin-top: 2%;
+    font-size: 14px;
+    border: 1px solid gainsboro;
+    width: 400px;
+}
+
+.signUpLink{
+    text-align: center;
+    font-size: 14px;
+}
+
+.signUpLink>p>span{
+    font-weight: bold;
+    color: cornflowerblue;
+    cursor: pointer;
+}
