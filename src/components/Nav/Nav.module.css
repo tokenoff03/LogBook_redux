@@ -16,6 +16,7 @@
     font-family: 'SANDBOX', sans-serif;
     font-weight: 400;
     font-size: 2.5em;
+    margin-left: 15px;
 }
 
 .ul {
@@ -49,4 +50,7 @@ a{
 .ul a.active {
     color: purple;
     
+}
+.signLi {
+    margin-top: 40px;
 }

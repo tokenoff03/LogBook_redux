@@ -9,10 +9,11 @@ function App() {
       <div className="App">
         <Nav/>
         <div className='body'>
-        <Registration/>
+       
           <Routes>
             <Route path='/' element={<Profile/>}/>
             <Route path="/message" ></Route>
+            <Route path='/sign-in' element={<Registration/>}/>
           </Routes>
           
         </div>
