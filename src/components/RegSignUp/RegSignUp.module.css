@@ -1,0 +1,104 @@
+.title {
+    font-family: 'SANDBOX', sans-serif;
+    font-weight: 400;
+    font-size: 1.8em;
+    margin-left: 18%;
+}
+
+.title>h1{
+    cursor: pointer;
+}
+
+.note{
+    width: 230px;
+    margin: 0 auto;
+    text-align: center;
+    color: grey;
+}
+
+.note>h3{
+    margin: 0;
+    font-weight: normal;
+}
+
+.signUpContainer{
+    margin-left: 30%;
+    margin-top: 5%;
+    padding-bottom: 3%;
+    border: 1px solid gainsboro;
+    width: 400px;
+}
+
+.inputData{
+    margin-top: 5%;
+    margin-left: 18%;
+}
+
+.inputData>input{
+    width: 210px;
+    height: 30px;
+    outline: none;
+    border: 1px solid gainsboro;
+    padding-left: 10px;
+    padding-right: 30px;
+    margin-top: 1.5%;
+}
+
+.privacyPolicy{
+    width: 230px;
+    margin: 0 auto;
+    text-align: center;
+    color: grey;
+}
+
+.privacyPolicy>p{
+    font-size: 13px;
+}
+
+.privacyPolicy>p>b{
+    cursor: pointer;
+}
+
+
+.signUpButton{
+    background-color: cornflowerblue ;
+    margin-top: 4% ;
+    margin-left: 18%;
+    width: 250px;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.signUpButton>span{
+    color: white;
+    padding-top: 7px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.signInContainer{
+    margin-left: 30%;
+    margin-top: 2%;
+    font-size: 14px;
+    border: 1px solid gainsboro;
+    width: 400px;
+}
+
+.signInLink{
+    text-align: center;
+    font-size: 14px;
+}
+
+.signInLink>p>span{
+    font-weight: bold;
+    color: cornflowerblue;
+    cursor: pointer;
+}
+
+.signInLink>p>a{
+    color: cornflowerblue;
+    font-weight: bold;
+    cursor: pointer;
+}
