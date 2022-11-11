@@ -12,6 +12,23 @@
     width: 400px;
 }
 
+.inputData{
+    margin-left: 18%;
+}
+
+.inputData>input{
+    width: 210px;
+    height: 30px;
+    outline: none;
+    border: 1px solid gainsboro;
+    padding-left: 10px;
+    padding-right: 30px;
+    margin-top: 1.5%;
+}
+
+.inputData>input:first-child{
+    margin-top: 0;
+}
 .login{
     margin-left: 18%;
 }
@@ -78,8 +95,8 @@
     font-size: 14px;
 }
 
-.signUpLink>p>span{
-    font-weight: bold;
+.signUpLink>p>a{
     color: cornflowerblue;
+    font-weight: bold;
     cursor: pointer;
 }

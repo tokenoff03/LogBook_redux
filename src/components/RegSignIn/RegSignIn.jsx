@@ -1,16 +1,16 @@
-import rs from "./Registration.module.css";
+import rs from "./RegSignIn.module.css";
+import ns from "../Nav/Nav.module.css";
+import {NavLink} from "react-router-dom";
 
-function Registration() {
+function RegSignIn() {
   return (
     <div className={rs.Registration}>
       <div className={rs.signInContainer}>
         <div className={rs.title}>
           <h1 className={rs.title}>LogBook</h1>
         </div>
-        <div className={rs.login}>
+        <div className={rs.inputData}>
           <input placeholder={"Имя пользователя или эл. адрес"} />
-        </div>
-        <div className={rs.password}>
           <input placeholder={"Пароль"} />
         </div>
         <div className={rs.signInButton}>
@@ -23,7 +23,12 @@ function Registration() {
       <div className={rs.signUpContainer}>
         <div className={rs.signUpLink}>
           <p>
-            У вас нет аккаунта? <span>Зарегистрируйтесь</span>
+            У вас нет аккаунта?
+            <NavLink
+                to="/sign-up"
+                className={(navData) => (navData.isActive ? ns.active : "")}
+            > Зарегистрируйтесь
+            </NavLink>
           </p>
         </div>
       </div>
@@ -31,4 +36,4 @@ function Registration() {
   );
 }
 
-export default Registration;
+export default RegSignIn;
