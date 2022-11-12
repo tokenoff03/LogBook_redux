@@ -62,6 +62,7 @@
 
 .signUpButton{
     background-color: cornflowerblue ;
+    border: 1px solid cornflowerblue;
     margin-top: 4% ;
     margin-left: 18%;
     width: 250px;
@@ -69,14 +70,11 @@
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
+    color: white;
+    padding-top-bottom: 7px;
+    font-weight: bold;
 }
 
-.signUpButton>span{
-    color: white;
-    padding-top: 7px;
-    font-weight: bold;
-    margin: 0;
-}
 
 .signInContainer{
     margin-left: 30%;
