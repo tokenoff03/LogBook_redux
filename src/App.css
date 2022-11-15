@@ -20,3 +20,10 @@ ul {
 a {
   text-decoration: none;
 }
+
+.container {
+  width: 75%;
+  background-color: silver;
+  margin-left: auto;
+  margin-right: auto;
+}

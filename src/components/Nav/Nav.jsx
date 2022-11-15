@@ -78,7 +78,7 @@ function Nav() {
             </li>
           </NavLink>
           <NavLink
-            to="/message"
+            to="/dialogs"
             className={(navData) => (navData.isActive ? ns.active : "")}
           >
             <li>

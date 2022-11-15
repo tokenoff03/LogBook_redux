@@ -1,0 +1,19 @@
+.containerUser {
+    border-right: 1px solid rgb(219, 219, 219);
+    overflow-y: scroll;
+    padding-top: 20px;
+}
+.containerMessage {
+    
+  
+}
+
+.containerDialogs {
+    display: grid;
+    grid-template-columns: 1fr 1.7fr;
+    margin-top: 20px;
+    border: 1px solid rgb(219, 219, 219);
+    height: 690px;
+    background-color: white;
+}
+

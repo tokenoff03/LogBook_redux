@@ -1,0 +1,24 @@
+.usersItems {
+    display: flex;
+    padding-left: 20px;  
+    margin-top: 15px; 
+}
+
+.usersItems img {
+    width: 60px;
+    height: 60px;
+}
+
+.infoBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+}
+.infoBlock p {
+    margin: 0;
+}
+
+.infoBlock p:last-child{
+    color:rgb(168, 168, 168)
+}

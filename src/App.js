@@ -4,7 +4,8 @@ import Profile from './components/Profile/Profile';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import RegSignIn from './components/RegSignIn/RegSignIn'
 import RegSignUp from "./components/RegSignUp/RegSignUp";
-function App() {
+import Dialogs from './components/Dialogs/Dialogs';
+function App(props) {
   return (
     <BrowserRouter >
       <div className="App">
@@ -12,7 +13,7 @@ function App() {
         <div className='body'>
           <Routes>
             <Route path='/' element={<Profile/>}/>
-            <Route path="/message" ></Route>
+            <Route path="/dialogs*" element={<Dialogs usersItems = {props.usersItems}/>}/>
             <Route path='/sign-in' element={<RegSignIn/>}/>
             <Route path='/sign-up' element={<RegSignUp/>}/>
           </Routes>

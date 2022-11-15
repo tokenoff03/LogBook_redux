@@ -6,6 +6,7 @@ import React, { useState } from "react";
 function RegSignIn() {
   const [password, setPassword] = useState();
   const [login, setLogin] = useState();
+
   const checkUser = (usersArray, existLogin, existPassword) => {
     for (let i = 0; i < usersArray.length; i++) {
       if (
@@ -43,6 +44,7 @@ function RegSignIn() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+
         <NavLink to="/">
           <button className={rs.signInButton} onClick={clickButton}>
             Войти
