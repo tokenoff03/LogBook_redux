@@ -1,9 +1,11 @@
 import rs from "./RegSignIn.module.css";
 import ns from "../Nav/Nav.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "./../../context";
 
 function RegSignIn() {
+  const { usersDialog, users } = useContext(Context);
   const navigate = useNavigate();
   const [password, setPassword] = useState();
   const [login, setLogin] = useState();
@@ -21,13 +23,12 @@ function RegSignIn() {
   };
 
   const clickButton = () => {
-    let log_info = JSON.parse(localStorage.getItem("logInfo"));
-    if (localStorage.getItem("logInfo")) {
-      if (checkUser(log_info.users, login, password)) {
+    if (users.length != 0) {
+      if (checkUser(users, login, password)) {
         navigate("/");
         alert("Welcome " + login);
       } else alert("Incorrect password or User does not exist");
-    } else alert("Incorrect password or User does not exist");
+    } else alert("User does not exist");
   };
 
   return (

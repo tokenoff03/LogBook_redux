@@ -1,9 +1,11 @@
 import rs from "./RegSignUp.module.css";
 import ns from "../Nav/Nav.module.css";
 import { NavLink } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "./../../context";
 
 function RegSignUp() {
+  const { usersDialog, users } = useContext(Context);
   const [password, setPassword] = useState();
   const [login, setLogin] = useState();
   const checkUser = (usersArray, existLogin, existPassword) => {
@@ -19,17 +21,16 @@ function RegSignUp() {
   };
 
   function clickButton(event) {
-    if (localStorage.getItem("logInfo")) {
-      let log_info = JSON.parse(localStorage.getItem("logInfo"));
-      if (checkUser(log_info.users, login, password)) {
+    if (users.length != 0) {
+      if (checkUser(users, login, password)) {
         alert("User Exist!!");
       } else {
-        log_info.users.push({ login: login, password: password });
-        localStorage.setItem("logInfo", JSON.stringify(log_info));
+        users.push({ login: login, password: password });
       }
     } else {
-      let log_info = [{ login: login, password: password }];
-      localStorage.setItem("logInfo", JSON.stringify({ users: log_info }));
+      if (login != undefined || password != undefined)
+        users.push({ login: login, password: password });
+      else alert("Login or password is empty");
     }
   }
 

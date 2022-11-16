@@ -23,7 +23,7 @@ function App() {
   let users =[];
   return (
     <BrowserRouter >
-      <Context.Provider value={{usersDialog}}>
+      <Context.Provider value={{usersDialog, users}}>
         <div className="App">
           <Nav/>
           <div className='body'>
