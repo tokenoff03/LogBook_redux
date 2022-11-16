@@ -1,9 +1,10 @@
 import rs from "./RegSignIn.module.css";
 import ns from "../Nav/Nav.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 
 function RegSignIn() {
+  const navigate = useNavigate();
   const [password, setPassword] = useState();
   const [login, setLogin] = useState();
 
@@ -22,8 +23,10 @@ function RegSignIn() {
   const clickButton = () => {
     let log_info = JSON.parse(localStorage.getItem("logInfo"));
     if (localStorage.getItem("logInfo")) {
-      if (checkUser(log_info.users, login, password)) alert("Welcome " + login);
-      else alert("Incorrect password or User does not exist");
+      if (checkUser(log_info.users, login, password)) {
+        navigate("/");
+        alert("Welcome " + login);
+      } else alert("Incorrect password or User does not exist");
     } else alert("Incorrect password or User does not exist");
   };
 
@@ -45,11 +48,10 @@ function RegSignIn() {
           />
         </div>
 
-        <NavLink to="/">
-          <button className={rs.signInButton} onClick={clickButton}>
-            Войти
-          </button>
-        </NavLink>
+        <button className={rs.signInButton} onClick={clickButton}>
+          Войти
+        </button>
+
         <div className={rs.helpButtons}>
           <span>Забыли пароль?</span>
         </div>
