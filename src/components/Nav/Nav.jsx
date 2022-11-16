@@ -1,8 +1,11 @@
 import ns from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
 import React, { useState } from "react";
+import { useContext } from "react";
+import { Context } from "../../context";
 
 function Nav() {
+  const { usersDialog, users, currentUser } = useContext(Context);
   const [loginBlock, setLoginBlock] = useState(false);
   const checkUser = (usersArray, existLogin, existPassword) => {
     for (let i = 0; i < usersArray.length; i++) {
