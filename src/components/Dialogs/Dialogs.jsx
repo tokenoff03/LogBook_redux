@@ -2,12 +2,15 @@ import ds from "./Dialogs.module.css";
 import Messages from "./Messages/Messages";
 import Users from "./Users/Users";
 import { NavLink } from "react-router-dom";
-function Dialogs(props) {
+import { Context } from "./../../context";
+import { useContext } from "react";
+function Dialogs() {
+  const { usersDialog } = useContext(Context);
   return (
     <div className={ds.Dialogs}>
       <div className={`${ds.containerDialogs} container`}>
         <div className={ds.containerUser}>
-          {props.usersItems.map((user) => (
+          {usersDialog.map((user) => (
             <NavLink
               to={`${user.id}`}
               className={(navData) => (navData.isActive ? ds.active : "")}

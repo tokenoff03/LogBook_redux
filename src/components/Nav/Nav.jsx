@@ -30,21 +30,20 @@ function Nav() {
                 width="30"
                 height="30"
                 fill="currentColor"
-                class="bi bi-house"
                 viewBox="0 0 16 16"
                 id="IconChangeColor"
               >
                 {" "}
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"
                   id="mainIconPathAttribute"
-                  stroke-width="0.3"
+                  strokeWidth="0.3"
                   stroke="#000000"
                   fill="#000000"
                 ></path>{" "}
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"
                   id="mainIconPathAttribute"
                   stroke="#000000"
@@ -64,7 +63,6 @@ function Nav() {
                 width="30"
                 height="30"
                 fill="currentColor"
-                class="bi bi-search"
                 viewBox="0 0 16 16"
                 id="IconChangeColor"
               >
@@ -84,15 +82,14 @@ function Nav() {
             <li>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-message-circle-2"
                 width="30"
                 height="30"
                 viewBox="0 0 24 24"
-                stroke-width="2"
+                strokeWidth="2"
                 stroke="currentColor"
                 fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 id="IconChangeColor"
               >
                 {" "}
@@ -123,7 +120,6 @@ function Nav() {
                 width="30"
                 height="30"
                 fill="currentColor"
-                class="bi bi-heart"
                 viewBox="0 0 16 16"
                 id="IconChangeColor"
               >
@@ -146,7 +142,6 @@ function Nav() {
                 width="30"
                 height="30"
                 fill="currentColor"
-                class="bi bi-people"
                 viewBox="0 0 16 16"
                 id="IconChangeColor"
               >
@@ -169,7 +164,6 @@ function Nav() {
                 width="30"
                 height="30"
                 fill="currentColor"
-                class="bi bi-door-open-fill"
                 viewBox="0 0 16 16"
                 id="IconChangeColor"
               >
