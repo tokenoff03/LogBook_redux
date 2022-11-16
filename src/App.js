@@ -6,6 +6,7 @@ import RegSignIn from './components/RegSignIn/RegSignIn'
 import RegSignUp from "./components/RegSignUp/RegSignUp";
 import Dialogs from './components/Dialogs/Dialogs';
 import {Context} from "./context"
+import { useState } from 'react';
 function App() {
   let usersDialog = [
     {id: 1, name: "Адиль Токен"},
@@ -21,9 +22,12 @@ function App() {
   ]
 
   let users =[];
+  let currentUser = [];
+
+
   return (
     <BrowserRouter >
-      <Context.Provider value={{usersDialog, users}}>
+      <Context.Provider value={{usersDialog, users, currentUser}}>
         <div className="App">
           <Nav/>
           <div className='body'>
