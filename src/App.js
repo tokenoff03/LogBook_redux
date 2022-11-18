@@ -26,24 +26,23 @@ function App() {
 
 
   return (
-    <BrowserRouter >
-      <Context.Provider value={{usersDialog, users, currentUser}}>
-        <div className="App">
-          <Nav/>
-          <div className='body'>
-            <Routes>
-              <Route path='/' element={<Profile/>}/>
-              <Route path="/dialogs*" element={<Dialogs/>}/>
-              <Route path='/sign-in' element={<RegSignIn/>}/>
-              <Route path='/sign-up' element={<RegSignUp/>}/>
-            </Routes>
-            
-          </div>
-          
-        </div>
-      </Context.Provider>
-    </BrowserRouter>
-  );
+      <BrowserRouter>
+          <Context.Provider value={{ usersDialog, users, currentUser }}>
+              <div className="App">
+                  <Nav />
+                  <div className="body">
+                      <Routes>
+                          <Route path="/" element={<Profile />} />
+                          <Route path="/dialogs*" element={<Dialogs />} />
+                          <Route path="/dialogs/:id" element={<Dialogs />} />
+                          <Route path="/sign-in" element={<RegSignIn />} />
+                          <Route path="/sign-up" element={<RegSignUp />} />
+                      </Routes>
+                  </div>
+              </div>
+          </Context.Provider>
+      </BrowserRouter>
+  )
 }
 
 export default App;
