@@ -1,9 +1,11 @@
 import rs from "./RegSignUp.module.css";
 import ns from "../Nav/Nav.module.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { Context } from "../../context";
 
 function RegSignUp() {
+  const { store } = useContext(Context);
   let Navig = useNavigate();
   const [password, setPassword] = useState();
   const [login, setLogin] = useState();

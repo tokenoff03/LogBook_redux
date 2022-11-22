@@ -5,7 +5,7 @@ import React, { useState, useContext } from "react";
 import { Context } from "./../../context";
 
 function RegSignIn() {
-  const { Data } = useContext(Context);
+  const { Store } = useContext(Context);
   let logInfo = JSON.parse(localStorage.getItem("logInfo"));
   const [password, setPassword] = useState();
   const [login, setLogin] = useState();
@@ -33,10 +33,6 @@ function RegSignIn() {
     if (logInfo) {
       if (checkUser(logInfo.users, login, password)) {
         alert("Welcome " + login);
-        logInfo.users.forEach((element) => {
-          if (element.isAuth) Data.currentUser.isAuth = true;
-        });
-
         Navig("/");
       } else alert("Incorrect password or User does not exist");
     } else {

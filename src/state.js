@@ -20,7 +20,14 @@ let store = {
                 message: "Hello bro",
             }],
             newPostText: ''
+        },
+        localStore: {
+            logInfo: JSON.parse(localStorage.getItem("logInfo"))
+        },
+        currentUser: {
+            isAuth: false
         }
+
         
     },
     getState(){
@@ -48,3 +55,4 @@ let store = {
 }
 
 export default store;
+window.store = store;
