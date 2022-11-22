@@ -1,20 +1,28 @@
 import rs from "./RegSignIn.module.css";
 import ns from "../Nav/Nav.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import React, { useState, useContext } from "react";
 import { Context } from "./../../context";
 
 function RegSignIn() {
-  const { usersDialog, users, currentUser } = useContext(Context);
+  const { Data } = useContext(Context);
+  let logInfo = JSON.parse(localStorage.getItem("logInfo"));
   const [password, setPassword] = useState();
   const [login, setLogin] = useState();
-
+  let Navig = useNavigate();
   const checkUser = (usersArray, existLogin, existPassword) => {
     for (let i = 0; i < usersArray.length; i++) {
       if (
         usersArray[i].login == existLogin &&
         usersArray[i].password == existPassword
       ) {
+        usersArray[i].isAuth = true;
+        logInfo.users[i] = {
+          login: existLogin,
+          password: existPassword,
+          isAuth: true,
+        };
+        localStorage.setItem("logInfo", JSON.stringify(logInfo));
         return true;
       }
     }
@@ -22,13 +30,18 @@ function RegSignIn() {
   };
 
   const clickButton = () => {
-    if (users.length != 0) {
-      if (checkUser(users, login, password)) {
-        currentUser.login = login;
-        currentUser.password = password;
+    if (logInfo) {
+      if (checkUser(logInfo.users, login, password)) {
         alert("Welcome " + login);
+        logInfo.users.forEach((element) => {
+          if (element.isAuth) Data.currentUser.isAuth = true;
+        });
+
+        Navig("/");
       } else alert("Incorrect password or User does not exist");
-    } else alert("Incorrect password or User does not exist");
+    } else {
+      alert("Incorrect password or User does not exist");
+    }
   };
 
   return (
@@ -49,11 +62,10 @@ function RegSignIn() {
           />
         </div>
 
-        <NavLink to="/">
-          <button className={rs.signInButton} onClick={clickButton}>
-            Войти
-          </button>
-        </NavLink>
+        <button className={rs.signInButton} onClick={clickButton}>
+          Войти
+        </button>
+
         <div className={rs.helpButtons}>
           <span>Забыли пароль?</span>
         </div>

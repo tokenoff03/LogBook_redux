@@ -1,9 +1,17 @@
 import ps from "./Profile.module.css";
 import { Context } from "../../context";
 import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 
 function Profile() {
-  const { usersDialog, users, currentUser } = useContext(Context);
+  let logInfo = JSON.parse(localStorage.getItem("logInfo"));
+  let currentUser;
+  logInfo.users.forEach((element) => {
+    if (element.isAuth) {
+      currentUser = element;
+    }
+  });
+  if (!currentUser) return <Navigate to="/sign-in" />;
   return (
     <div className={ps.Profile}>
       <div className={ps.container}>

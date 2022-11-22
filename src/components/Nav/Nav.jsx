@@ -1,23 +1,25 @@
 import ns from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
-import React, { useState } from "react";
 import { useContext } from "react";
 import { Context } from "../../context";
 
 function Nav() {
-  const { usersDialog, users, currentUser } = useContext(Context);
-  const [loginBlock, setLoginBlock] = useState(false);
-  const checkUser = (usersArray, existLogin, existPassword) => {
-    for (let i = 0; i < usersArray.length; i++) {
-      if (
-        usersArray[i].login == existLogin &&
-        usersArray[i].password == existPassword
-      ) {
-        return true;
+  const { store } = useContext(Context);
+
+  const exitFunc = (event) => {
+    let logInfo = JSON.parse(localStorage.getItem("logInfo"));
+    for (let i = 0; i < logInfo.users.length; i++) {
+      if (logInfo.users[i].isAuth) {
+        logInfo.users[i] = {
+          login: logInfo.users[i].login,
+          password: logInfo.users[i].password,
+          isAuth: false,
+        };
+        localStorage.setItem("logInfo", JSON.stringify(logInfo));
       }
     }
-    return false;
   };
+
   return (
     <div className={ns.Nav}>
       <div className={ns.container}>
@@ -57,7 +59,7 @@ function Nav() {
             </li>
           </NavLink>
           <NavLink
-            to="/search"
+            to="/news"
             className={(navData) => (navData.isActive ? ns.active : "")}
           >
             <li>
@@ -66,16 +68,21 @@ function Nav() {
                 width="30"
                 height="30"
                 fill="currentColor"
+                className="bi bi-newspaper"
                 viewBox="0 0 16 16"
                 id="IconChangeColor"
               >
                 {" "}
                 <path
-                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                  d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"
+                  id="mainIconPathAttribute"
+                ></path>{" "}
+                <path
+                  d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"
                   id="mainIconPathAttribute"
                 ></path>{" "}
               </svg>
-              Поисковый запрос
+              Новости
             </li>
           </NavLink>
           <NavLink
@@ -157,28 +164,57 @@ function Nav() {
               Друзья
             </li>
           </NavLink>
-          <NavLink
-            to="/sign-in"
-            className={(navData) => (navData.isActive ? ns.active : "")}
-          >
-            <li className={ns.signLi}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-                id="IconChangeColor"
-              >
-                {" "}
-                <path
-                  d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"
-                  id="mainIconPathAttribute"
-                ></path>{" "}
-              </svg>
-              Войти
-            </li>
-          </NavLink>
+
+          {true ? (
+            <NavLink
+              to="/sign-in"
+              className={`${
+                ((navData) => (navData.isActive ? ns.active : ""), ns.signLi)
+              }`}
+            >
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                  id="IconChangeColor"
+                >
+                  {" "}
+                  <path
+                    d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"
+                    id="mainIconPathAttribute"
+                  ></path>{" "}
+                </svg>
+                Войти
+              </li>
+            </NavLink>
+          ) : (
+            <NavLink
+              to="/sign-in"
+              className={(navData) => (navData.isActive ? ns.active : "")}
+              onClick={exitFunc}
+            >
+              <li className={ns.signLi}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                  id="IconChangeColor"
+                >
+                  {" "}
+                  <path
+                    d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"
+                    id="mainIconPathAttribute"
+                  ></path>{" "}
+                </svg>
+                Выйти
+              </li>
+            </NavLink>
+          )}
         </ul>
       </div>
     </div>

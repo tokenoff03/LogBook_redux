@@ -1,16 +1,24 @@
 import ms from "./Messages.module.css";
-
+import { useParams } from "react-router-dom";
+import React, { useContext } from "react";
+import { Context } from "./../../../context";
 function Messages() {
+  const params = useParams();
+  const { Data } = useContext(Context);
+
   return (
     <div className={ms.Messages}>
-      <div className={ms.messageItems}>sad</div>
+      <div
+        className={ms.messageItems}
+        // style={{ backgroundColor: params["*"] === "1" ? "red" : "green" }}
+      ></div>
       <div className={ms.inputBlock}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="25"
           height="25"
           fill="currentColor"
-          class="bi bi-emoji-smile"
+          className="bi bi-emoji-smile"
           viewBox="0 0 16 16"
           id="IconChangeColor"
         >
