@@ -24,13 +24,16 @@ function News() {
   return (
     <div className={ns.News}>
       <div className={ns.container}>
-        <textarea
-          cols="50"
-          rows="5"
-          ref={newPostElement}
-          onChange={onPostChange}
-        ></textarea>
-        <button onClick={addPost}>Add post</button>
+        <div className={ns.postContent}>
+          <textarea
+            cols="50"
+            rows="5"
+            ref={newPostElement}
+            onChange={onPostChange}
+          ></textarea>
+          <hr/>
+          <button onClick={addPost}>Опубликовать</button>
+      </div>
         {posts}
       </div>
     </div>
