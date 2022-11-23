@@ -1,16 +1,9 @@
-import { useParams } from "react-router-dom"
 import ms from "./Messages.module.css"
 
 function Messages() {
-    const params = useParams()
-    console.log(params)
-    const isAuth = true //какая то глобальная переменная которая отвечает авторизован ли пользователь
-
     return (
         <div className={ms.Messages}>
-            <div className={ms.messageItems} style={{ backgroundColor: params.id === "1" ? "red" : "green" }}>
-                sad
-            </div>
+            <div className={ms.messageItems}>sad</div>
             <div className={ms.inputBlock}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +25,7 @@ function Messages() {
                     ></path>{" "}
                 </svg>
                 <input type="textarea" placeholder="Напишите сообщение..." />
-                {isAuth ? <button>Отправить</button> : <button disabled>Вы не авторизованы</button>}
+                <button>Отправить</button>
             </div>
         </div>
     )

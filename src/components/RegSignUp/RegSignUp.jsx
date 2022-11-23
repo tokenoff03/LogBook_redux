@@ -1,11 +1,12 @@
 import rs from "./RegSignUp.module.css";
 import ns from "../Nav/Nav.module.css";
-import { NavLink } from "react-router-dom";
-import React, { useState, useContext } from "react";
-import { Context } from "./../../context";
+import { NavLink, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Context } from "../../context";
 
 function RegSignUp() {
-  const { usersDialog, users } = useContext(Context);
+  const { store } = useContext(Context);
+  let Navig = useNavigate();
   const [password, setPassword] = useState();
   const [login, setLogin] = useState();
   const checkUser = (usersArray, existLogin, existPassword) => {
@@ -19,18 +20,33 @@ function RegSignUp() {
     }
     return false;
   };
-
   function clickButton(event) {
-    if (users.length != 0) {
-      if (checkUser(users, login, password)) {
-        alert("User Exist!!");
+    let logInfo = JSON.parse(localStorage.getItem("logInfo"));
+    if (login != "" && password != "") {
+      if (logInfo) {
+        if (checkUser(logInfo.users, login, password)) {
+          alert("User Exist!!");
+          Navig("/sign-in");
+        } else {
+          logInfo.users.push({
+            login: login,
+            password: password,
+            isAuth: false,
+          });
+          localStorage.setItem("logInfo", JSON.stringify(logInfo));
+          Navig("/sign-in");
+        }
       } else {
-        users.push({ login: login, password: password });
+        localStorage.setItem(
+          "logInfo",
+          JSON.stringify({
+            users: [{ login: login, password: password, isAuth: false }],
+          })
+        );
+        Navig("/sign-in");
       }
     } else {
-      if (login != undefined || password != undefined)
-        users.push({ login: login, password: password });
-      else alert("Login or password is empty");
+      alert("Login or password is empty");
     }
   }
 
@@ -63,14 +79,13 @@ function RegSignUp() {
             <b>Политику в отношении файлов cookie</b>.
           </p>
         </div>
-        <NavLink to="/sign-in">
-          <button
-            className={rs.signUpButton}
-            onClick={(event) => clickButton(event)}
-          >
-            Регистрация
-          </button>
-        </NavLink>
+
+        <button
+          className={rs.signUpButton}
+          onClick={(event) => clickButton(event)}
+        >
+          Регистрация
+        </button>
       </div>
       <div className={rs.signInContainer}>
         <div className={rs.signInLink}>
