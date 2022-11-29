@@ -13,13 +13,15 @@ function News() {
   const { store } = useContext(Context);
   let logInfo = JSON.parse(localStorage.getItem("logInfo"));
   if (!logInfo) return <Navigate to="/sign-up" />;
-  let currentUser;
+
   logInfo.users.forEach((element) => {
     if (element.isAuth) {
-      currentUser = element;
+      store.getState().currentUser.login = element.login;
+      store.getState().currentUser.isAuth = element.isAuth;
     }
   });
-  if (!currentUser) return <Navigate to="/sign-in" />;
+
+  if (!store.getState().currentUser.isAuth) return <Navigate to="/sign-in" />;
 
   let newPostElement = React.createRef();
   let posts = store._state.newsPage.posts.map((p) => (
