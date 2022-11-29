@@ -7,6 +7,7 @@ import RegSignUp from "./components/RegSignUp/RegSignUp"
 import Dialogs from "./components/Dialogs/Dialogs"
 import News from "./components/News/News"
 import { useEffect, useState } from "react"
+
 function App() {
     const [isAuth, setIsAuth] = useState(false)
     const logInfo = JSON.parse(localStorage.getItem("logInfo")) || []

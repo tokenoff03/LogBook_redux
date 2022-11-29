@@ -8,7 +8,13 @@ function Posts(props) {
   return (
     <div className={ns.Posts}>
       <div className={ns.containerPosts}>
-        <img src="user.png" alt="user" />
+        <span className={ns.circleImage}>
+          <img
+            src={`./img/${store.getState().currentUser.photoProfile}`}
+            alt="user"
+          />
+        </span>
+
         <div className={ns.containerPostsDetails}>
           <div className={ns.header}>
             <h4>{store.getState().currentUser.login}</h4>

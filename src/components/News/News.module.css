@@ -50,21 +50,33 @@
     display: flex;
     align-items: center;
     gap: 30px;
+    position: relative;
 }
-.containerPosts img {
-    width: 60px;
-    height: 60px;
-}
+
 
 .header{
     display: flex;
 }
 
 .header svg{
-    margin-left: 415px;
+    position: absolute;
+    right: 1px;
     cursor: pointer;
 }
 
 .header h4{
     margin: 0;
+}
+
+.circleImage{
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 60px;
+    height: 60px;
+}
+.circleImage img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
 }

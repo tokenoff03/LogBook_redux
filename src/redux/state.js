@@ -34,36 +34,37 @@ let store = {
             }],
             newPostText: ''
         },
-        
+
         currentUser: {
             login: "",
-            isAuth: false
+            isAuth: false,
+            photoProfile: "",
+            images: ""
         },
 
-        users: {
-            user1: {
+        users: [
+             {
                 login: "ad1lek",
-                photoProfile: "",
+                photoProfile: "ad1lek.jpeg",
                 images: [
                     "","",""
                 ]
             },
-            user2: {
+             {
                 login: "chapaev",
-                photoProfile: "",
+                photoProfile: "chapaev.jpeg",
                 images: [
                     "","",""
                 ]
             },
-            user3: {
+             {
                 login: "askhat",
-                photoProfile: "",
+                photoProfile: "askhat.png",
                 images: [
                     "","",""
                 ]
             }
-            
-        }
+        ]
 
         
     },
@@ -78,7 +79,16 @@ let store = {
     subscribe(observer){
         this._callSubscriber = observer;
     },
-
+    checkUsers ()  {
+        this.getState().users.forEach((element) => {
+            if (element.login == this.getState().currentUser.login) {
+                this.getState().currentUser.photoProfile = element.photoProfile;
+                this.getState().currentUser.images = element.images;
+            }
+        });
+        
+        
+    },
     dispatch(action){
         if(action.type === ADD_POST){
             let newPost = {
@@ -102,6 +112,7 @@ let store = {
     }
 }
 
+ 
 export const addPostActionCreater = () => ({type: ADD_POST});
 
 export const updateNewPostTextActionCreater = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text});

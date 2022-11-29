@@ -38,6 +38,7 @@ function News() {
     let action = updateNewPostTextActionCreater(text);
     store.dispatch(action);
   };
+  store.checkUsers();
   return (
     <div className={ns.News}>
       <div className={ns.container}>

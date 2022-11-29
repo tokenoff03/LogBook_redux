@@ -16,18 +16,19 @@ function Profile() {
   });
 
   if (!store.getState().currentUser.isAuth) return <Navigate to="/sign-in" />;
+  store.checkUsers();
   return (
     <div className={ps.Profile}>
       <div className={ps.container}>
         <div className={ps.header}>
           <div className={ps.headerLeft}>
-            <img
-              className={ps.headerLeftLogo}
-              width={150}
-              height={150}
-              src="/img/logo.png"
-              alt="photo"
-            />
+            <span className={ps.circleImage}>
+              <img
+                className={ps.headerLeftLogo}
+                src={`/img/${store.getState().currentUser.photoProfile}`}
+                alt="photo"
+              />
+            </span>
           </div>
           <div className={ps.headerRight}>
             <div className={ps.ProfileName}>
