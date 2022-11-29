@@ -46,6 +46,7 @@
 .containerPosts {
     margin-top: 3%;
     margin-left: 17%;
+    width: 550px;
     display: flex;
     align-items: center;
     gap: 30px;
@@ -53,4 +54,17 @@
 .containerPosts img {
     width: 60px;
     height: 60px;
+}
+
+.header{
+    display: flex;
+}
+
+.header svg{
+    margin-left: 415px;
+    cursor: pointer;
+}
+
+.header h4{
+    margin: 0;
 }
