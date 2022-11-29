@@ -7,14 +7,15 @@ function Profile() {
   const { store } = useContext(Context);
   let logInfo = JSON.parse(localStorage.getItem("logInfo"));
   if (!logInfo) return <Navigate to="/sign-up" />;
-  let currentUser;
+
   logInfo.users.forEach((element) => {
     if (element.isAuth) {
-      currentUser = element;
+      store.getState().currentUser.login = element.login;
+      store.getState().currentUser.isAuth = element.isAuth;
     }
   });
 
-  if (!currentUser) return <Navigate to="/sign-in" />;
+  if (!store.getState().currentUser.isAuth) return <Navigate to="/sign-in" />;
   return (
     <div className={ps.Profile}>
       <div className={ps.container}>
@@ -25,11 +26,12 @@ function Profile() {
               width={150}
               height={150}
               src="/img/logo.png"
+              alt="photo"
             />
           </div>
           <div className={ps.headerRight}>
             <div className={ps.ProfileName}>
-              <h2>{currentUser.login}</h2>
+              <h2>{store.getState().currentUser.login}</h2>
 
               {/*<a className={ps.ProfileEdit}>Редактировать профиль</a>*/}
               {/*<img className={ps.ProfileSetting} width={24} height={24} src="/img/settings.png"/>*/}
