@@ -42,6 +42,7 @@
     font-weight: bold;
     font-size: 14px;
     color: white;
+    cursor: pointer;
 }
 .containerPosts {
     margin-top: 3%;

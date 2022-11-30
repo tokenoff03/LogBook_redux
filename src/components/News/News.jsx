@@ -38,19 +38,25 @@ function News() {
     let action = updateNewPostTextActionCreater(text);
     store.dispatch(action);
   };
+
+
+  const handleKeyUp = (e)=>{
+    if(e.key == 'Enter') addPost();
+  }
   store.checkUsers();
   return (
     <div className={ns.News}>
       <div className={ns.container}>
         <div className={ns.postContent}>
-          <textarea
-            cols="50"
-            rows="5"
-            ref={newPostElement}
-            onChange={onPostChange}
-          ></textarea>
-          <hr />
-          <button onClick={addPost}>Опубликовать</button>
+            <textarea
+              cols="50"
+              rows="5"
+              ref={newPostElement}
+              onChange={onPostChange}
+              onKeyUp={(e)=>handleKeyUp(e)}
+            ></textarea>
+            <hr />
+            <button type={"submit"}>Опубликовать</button>
         </div>
         {posts}
       </div>
