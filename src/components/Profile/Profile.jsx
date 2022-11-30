@@ -17,6 +17,11 @@ function Profile() {
 
   if (!store.getState().currentUser.isAuth) return <Navigate to="/sign-in" />;
   store.checkUsers();
+  let imagesUser = store
+    .getState()
+    .currentUser.images.map((p) => <img src={`./img/${p}`}></img>);
+
+  console.log(imagesUser);
   return (
     <div className={ps.Profile}>
       <div className={ps.container}>
@@ -51,7 +56,7 @@ function Profile() {
             </ul>
 
             <div className={ps.ProfileInformation}>
-              <span>Askhvt_Kaym kz</span>
+              <span>{store.getState().currentUser.name}</span>
               <br />
               <div>
                 IITU'24
@@ -65,6 +70,7 @@ function Profile() {
           </div>
         </div>
       </div>
+      <div className={ps.imagesBlock}>{imagesUser}</div>
     </div>
   );
 }

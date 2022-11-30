@@ -13,13 +13,16 @@ import {
 function Dialogs() {
   const { store } = useContext(Context);
   let logInfo = JSON.parse(localStorage.getItem("logInfo"));
-  let currentUser;
+  if (!logInfo) return <Navigate to="/sign-up" />;
+
   logInfo.users.forEach((element) => {
     if (element.isAuth) {
-      currentUser = element;
+      store.getState().currentUser.login = element.login;
+      store.getState().currentUser.isAuth = element.isAuth;
     }
   });
-  if (!currentUser) return <Navigate to="/sign-in" />;
+
+  if (!store.getState().currentUser.isAuth) return <Navigate to="/sign-in" />;
 
   let messages = store._state.dialogsPage.messages.map((p) => (
     <Messages message={p.message} />
@@ -35,6 +38,10 @@ function Dialogs() {
     let text = e.target.value;
     let action = updateNewMessageTextActionCreater(text);
     store.dispatch(action);
+  };
+
+  const handleKeyUp = (e) => {
+    if (e.key == "Enter") sendMessage();
   };
 
   return (
@@ -79,6 +86,7 @@ function Dialogs() {
               placeholder="Напишите сообщение..."
               ref={newMessageElement}
               onChange={onMessageChange}
+              onKeyUp={(e) => handleKeyUp(e)}
             />
             <button onClick={sendMessage}>Отправить</button>
           </div>
