@@ -8,7 +8,7 @@ import { useContext } from "react";
 import {
   sendMessageActionCreater,
   updateNewMessageTextActionCreater,
-} from "./../../redux/state";
+} from "./../../redux/dialogs-reducer";
 
 function Dialogs() {
   const { store } = useContext(Context);
@@ -17,16 +17,17 @@ function Dialogs() {
 
   logInfo.users.forEach((element) => {
     if (element.isAuth) {
-      store.getState().currentUser.login = element.login;
-      store.getState().currentUser.isAuth = element.isAuth;
+      store.getState().usersInfo.currentUser.login = element.login;
+      store.getState().usersInfo.currentUser.isAuth = element.isAuth;
     }
   });
 
-  if (!store.getState().currentUser.isAuth) return <Navigate to="/sign-in" />;
+  if (!store.getState().usersInfo.currentUser.isAuth)
+    return <Navigate to="/sign-in" />;
 
-  let messages = store._state.dialogsPage.messages.map((p) => (
-    <Messages message={p.message} />
-  ));
+  let messages = store
+    .getState()
+    .dialogsPage.messages.map((p) => <Messages message={p.message} />);
 
   let newMessageElement = React.createRef();
   let sendMessage = () => {

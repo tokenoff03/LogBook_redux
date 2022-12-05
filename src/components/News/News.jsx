@@ -4,10 +4,11 @@ import { Context } from "../../context";
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import Posts from "./Posts";
+import { checkUsers } from "../../redux/users-reducer";
 import {
   addPostActionCreater,
   updateNewPostTextActionCreater,
-} from "../../redux/state";
+} from "../../redux/news-reducer";
 
 function News() {
   const { store } = useContext(Context);
@@ -16,17 +17,18 @@ function News() {
 
   logInfo.users.forEach((element) => {
     if (element.isAuth) {
-      store.getState().currentUser.login = element.login;
-      store.getState().currentUser.isAuth = element.isAuth;
+      store.getState().usersInfo.currentUser.login = element.login;
+      store.getState().usersInfo.currentUser.isAuth = element.isAuth;
     }
   });
 
-  if (!store.getState().currentUser.isAuth) return <Navigate to="/sign-in" />;
+  if (!store.getState().usersInfo.currentUser.isAuth)
+    return <Navigate to="/sign-in" />;
 
   let newPostElement = React.createRef();
-  let posts = store._state.newsPage.posts.map((p) => (
-    <Posts message={p.message} />
-  ));
+  let posts = store
+    .getState()
+    .newsPage.posts.map((p) => <Posts message={p.message} />);
 
   let addPost = () => {
     store.dispatch(addPostActionCreater());
@@ -42,7 +44,7 @@ function News() {
   const handleKeyUp = (e) => {
     if (e.key == "Enter") addPost();
   };
-  store.checkUsers();
+  checkUsers();
   return (
     <div className={ns.News}>
       <div className={ns.container}>
@@ -55,7 +57,7 @@ function News() {
             onKeyUp={(e) => handleKeyUp(e)}
           ></textarea>
           <hr />
-          <button type={"submit"}>Опубликовать</button>
+          <button onClick={addPost}>Опубликовать</button>
         </div>
         {posts}
       </div>

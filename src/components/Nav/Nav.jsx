@@ -16,7 +16,7 @@ function Nav({ isAuth, setIsAuth }) {
           isAuth: false,
         };
         setIsAuth(false);
-        store.getState().currentUser.isAuth = false;
+        store.getState().usersInfo.currentUser.isAuth = false;
         localStorage.setItem("logInfo", JSON.stringify(logInfo));
       }
     }

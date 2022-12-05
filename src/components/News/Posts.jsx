@@ -10,14 +10,14 @@ function Posts(props) {
       <div className={ns.containerPosts}>
         <span className={ns.circleImage}>
           <img
-            src={`./img/${store.getState().currentUser.photoProfile}`}
+            src={`./img/${store.getState().usersInfo.currentUser.photoProfile}`}
             alt="user"
           />
         </span>
 
         <div className={ns.containerPostsDetails}>
           <div className={ns.header}>
-            <h4>{store.getState().currentUser.login}</h4>
+            <h4>{store.getState().usersInfo.currentUser.login}</h4>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="25"
