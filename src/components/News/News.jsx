@@ -55,7 +55,7 @@ function News() {
             onKeyUp={(e) => handleKeyUp(e)}
           ></textarea>
           <hr />
-          <button type={"submit"}>Опубликовать</button>
+          <button onClick={addPost}>Опубликовать</button>
         </div>
         {posts}
       </div>
