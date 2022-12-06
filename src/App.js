@@ -11,6 +11,12 @@ import { useEffect, useState } from "react"
 function App() {
     const [isAuth, setIsAuth] = useState(false)
     const logInfo = JSON.parse(localStorage.getItem("logInfo")) || []
+    localStorage.setItem(
+        "logInfo",
+        JSON.stringify({
+          users: [{ login: "ad1lek", password: 123123, isAuth: false }],
+        })
+      );
 
     useEffect(() => {
         logInfo.users.forEach((user) => {
@@ -19,6 +25,7 @@ function App() {
             }
         })
     }, [])
+
 
     return (
         <BrowserRouter>
