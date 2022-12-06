@@ -7,7 +7,12 @@ import {Context} from "./context";
 import store from "./redux/state";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-        
+localStorage.setItem(
+  "logInfo",
+  JSON.stringify({
+    users: [{ login: "ad1lek", password: 123123, isAuth: false }],
+  })
+);
 let rerenderEntireTree = ()=> {
   root.render(
     <React.StrictMode>
