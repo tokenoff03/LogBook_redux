@@ -9,6 +9,7 @@
 }
 
 .containerDialogs {
+    background-color: #fff;
     display: grid;
     grid-template-columns: 1fr 1.7fr;
     margin-top: 20px;

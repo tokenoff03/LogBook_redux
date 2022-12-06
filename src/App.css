@@ -1,5 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/sandbox');
-@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
 
 .App {
@@ -24,7 +24,6 @@ a {
 
 .container {
   width: 75%;
-  background-color: silver;
   margin-left: auto;
   margin-right: auto;
 }
