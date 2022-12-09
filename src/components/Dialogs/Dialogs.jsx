@@ -1,66 +1,28 @@
 import ds from "./Dialogs.module.css";
-import Messages from "./Messages/Messages";
-import Users from "./Users/Users";
 import React from "react";
-import { NavLink, Navigate } from "react-router-dom";
-import { Context } from "./../../context";
-import { useContext } from "react";
-import {
-  sendMessageActionCreater,
-  updateNewMessageTextActionCreater,
-} from "./../../redux/dialogs-reducer";
 
-function Dialogs() {
-  const { store } = useContext(Context);
-  let logInfo = JSON.parse(localStorage.getItem("logInfo"));
-  if (!logInfo) return <Navigate to="/sign-up" />;
-
-  logInfo.users.forEach((element) => {
-    if (element.isAuth) {
-      store.getState().usersInfo.currentUser.login = element.login;
-      store.getState().usersInfo.currentUser.isAuth = element.isAuth;
-    }
-  });
-
-  if (!store.getState().usersInfo.currentUser.isAuth)
-    return <Navigate to="/sign-in" />;
-
-  let messages = store
-    .getState()
-    .dialogsPage.messages.map((p) => <Messages message={p.message} />);
-
+function Dialogs(props) {
   let newMessageElement = React.createRef();
   let sendMessage = () => {
-    store.dispatch(sendMessageActionCreater());
+    props.sendMessage();
     newMessageElement.current.value = "";
   };
 
   let onMessageChange = (e) => {
     let text = e.target.value;
-    let action = updateNewMessageTextActionCreater(text);
-    store.dispatch(action);
+    props.updateNewMessageText(text);
   };
 
   const handleKeyUp = (e) => {
-    if (e.key == "Enter") sendMessage();
+    if (e.key === "Enter") sendMessage();
   };
 
   return (
     <div className={ds.Dialogs}>
       <div className={`${ds.containerDialogs} container`}>
-        <div className={ds.containerUser}>
-          {store.getState().dialogsPage.usersDialog.map((user) => (
-            <NavLink
-              key={user.id}
-              to={`${user.id}`}
-              className={(navData) => (navData.isActive ? ds.active : "")}
-            >
-              <Users fullName={user.name} />
-            </NavLink>
-          ))}
-        </div>
+        <div className={ds.containerUser}>{props.users}</div>
         <div className={ds.containerMessage}>
-          <div className={ds.messageItems}>{messages}</div>
+          <div className={ds.messageItems}>{props.messages}</div>
 
           <div className={ds.inputBlock}>
             <svg

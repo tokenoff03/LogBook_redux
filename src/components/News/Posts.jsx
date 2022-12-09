@@ -1,23 +1,16 @@
 import ns from "./News.module.css";
-import { Context } from "../../context";
-import { useContext } from "react";
-import { Navigate } from "react-router-dom";
 
 function Posts(props) {
-  const { store } = useContext(Context);
   return (
     <div className={ns.Posts}>
       <div className={ns.containerPosts}>
         <span className={ns.circleImage}>
-          <img
-            src={`./img/${store.getState().usersInfo.currentUser.photoProfile}`}
-            alt="user"
-          />
+          <img src={`./img/${props.currentUser.photoProfile}`} alt="user" />
         </span>
 
         <div className={ns.containerPostsDetails}>
           <div className={ns.header}>
-            <h4>{store.getState().usersInfo.currentUser.login}</h4>
+            <h4>{props.currentUser.login}</h4>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="25"

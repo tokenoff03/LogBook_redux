@@ -1,12 +1,12 @@
 import "./App.css"
 import Nav from "./components/Nav/Nav"
-import Profile from "./components/Profile/Profile"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import RegSignIn from "./components/RegSignIn/RegSignIn"
 import RegSignUp from "./components/RegSignUp/RegSignUp"
-import Dialogs from "./components/Dialogs/Dialogs"
-import News from "./components/News/News"
+import DialogsContainer from "./components/Dialogs/DialogsContainer"
+import NewsContainer from "./components/News/NewsContainer"
 import { useEffect, useState } from "react"
+import ProfileContainer from "./components/Profile/ProfileContainer"
 
 function App() {
     const [isAuth, setIsAuth] = useState(false)
@@ -26,9 +26,9 @@ function App() {
                 <Nav isAuth={isAuth} setIsAuth={setIsAuth} />
                 <div className="body">
                     <Routes>
-                        <Route path="/" element={<Profile />} />
-                        <Route path="/dialogs*" element={<Dialogs />} />
-                        <Route path="/news" element={<News />} />
+                        <Route path="/" element={<ProfileContainer />} />
+                        <Route path="/dialogs*" element={<DialogsContainer />} />
+                        <Route path="/news" element={<NewsContainer />} />
                         <Route path="/sign-in" element={<RegSignIn setIsAuth={setIsAuth} />} />
                         <Route path="/sign-up" element={<RegSignUp />} />
                     </Routes>

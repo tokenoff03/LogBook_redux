@@ -20,7 +20,6 @@ function Nav({ isAuth, setIsAuth }) {
         localStorage.setItem("logInfo", JSON.stringify(logInfo));
       }
     }
-    store._callSubscriber();
   };
 
   return (
