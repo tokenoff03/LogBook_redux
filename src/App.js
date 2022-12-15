@@ -7,6 +7,7 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer"
 import NewsContainer from "./components/News/NewsContainer"
 import { useEffect, useState } from "react"
 import ProfileContainer from "./components/Profile/ProfileContainer"
+import UsersContainer from "./components/Users/UsersContainer"
 
 function App() {
     const [isAuth, setIsAuth] = useState(false)
@@ -31,6 +32,7 @@ function App() {
                         <Route path="/news" element={<NewsContainer />} />
                         <Route path="/sign-in" element={<RegSignIn setIsAuth={setIsAuth} />} />
                         <Route path="/sign-up" element={<RegSignUp />} />
+                        <Route path="/users" element={<UsersContainer/>}/>
                     </Routes>
                 </div>
             </div>

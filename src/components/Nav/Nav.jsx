@@ -1,7 +1,5 @@
 import ns from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
-import { Context } from "../../context";
 import { useSelector } from "react-redux";
 
 function Nav({ isAuth, setIsAuth }) {
@@ -146,7 +144,7 @@ function Nav({ isAuth, setIsAuth }) {
             </li>
           </NavLink>
           <NavLink
-            to="/friends"
+            to="/users"
             className={(navData) => (navData.isActive ? ns.active : "")}
           >
             <li>
@@ -164,7 +162,7 @@ function Nav({ isAuth, setIsAuth }) {
                   id="mainIconPathAttribute"
                 ></path>{" "}
               </svg>
-              Друзья
+              Пользователи
             </li>
           </NavLink>
 

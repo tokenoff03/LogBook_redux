@@ -1,6 +1,6 @@
 import ds from "./Dialogs.module.css";
 import Messages from "./Messages/Messages";
-import Users from "./Users/Users";
+import DialogUsers from "./DialogUsers/DialogUsers";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import {
@@ -18,7 +18,7 @@ let mapStateToProps = (state) => {
         to={`${user.id}`}
         className={(navData) => (navData.isActive ? ds.active : "")}
       >
-        <Users fullName={user.name} />
+        <DialogUsers fullName={user.name} />
       </NavLink>
     )),
     messages: state.dialogsPage.messages.map((p) => (

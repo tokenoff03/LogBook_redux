@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {Context} from "./context";
 import store from "./redux/redux-store";
 import { Provider } from 'react-redux';
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -11,17 +10,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 localStorage.setItem(
   "logInfo",
   JSON.stringify({
-    users: [{ login: "ad1lek", password: 123123, isAuth: false }],
+    users: [{ login: "ad1lek", password: 123123, isAuth: true }],
   })
 );   
 
 let rerenderEntireTree = ()=> {
   root.render(
-    <React.StrictMode>
+    
       <Provider store={store}>
       <App/>
       </Provider>
-    </React.StrictMode>
+    
   );
 }
 rerenderEntireTree();

@@ -1,4 +1,4 @@
-import us from "./Users.module.css";
+import us from "./DialogUsers.module.css";
 
 function Users(props) {
   return (

@@ -1,0 +1,56 @@
+.usersContainer {
+  display: flex;
+  gap: 40px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.containerMain {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.circleImage{
+  display: block;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 90px;
+  height: 90px;
+}
+
+.circleImage img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.leftSide button {
+  margin-top: 10px;
+  cursor: pointer;
+  width: 100px;
+  background-color: cornflowerblue;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+}
+
+.rightSide {
+  display: flex;
+  border: 2px solid silver;
+  border-radius: 15px;
+  width: 65%;
+  justify-content: space-between;
+  padding: 5px;
+}
