@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Context} from "./context";
 import store from "./redux/redux-store";
+import { Provider } from 'react-redux';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 localStorage.setItem(
@@ -17,9 +18,9 @@ localStorage.setItem(
 let rerenderEntireTree = ()=> {
   root.render(
     <React.StrictMode>
-      <Context.Provider value={{store}}>
+      <Provider store={store}>
       <App/>
-      </Context.Provider>
+      </Provider>
     </React.StrictMode>
   );
 }

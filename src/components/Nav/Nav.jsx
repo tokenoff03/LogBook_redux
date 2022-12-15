@@ -2,9 +2,10 @@ import ns from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../context";
+import { useSelector } from "react-redux";
 
 function Nav({ isAuth, setIsAuth }) {
-  const { store } = useContext(Context);
+  let currentUser = useSelector((state) => state.usersInfo.currentUser);
 
   const exitFunc = (event) => {
     let logInfo = JSON.parse(localStorage.getItem("logInfo"));
@@ -16,7 +17,7 @@ function Nav({ isAuth, setIsAuth }) {
           isAuth: false,
         };
         setIsAuth(false);
-        store.getState().usersInfo.currentUser.isAuth = false;
+        currentUser.isAuth = false;
         localStorage.setItem("logInfo", JSON.stringify(logInfo));
       }
     }

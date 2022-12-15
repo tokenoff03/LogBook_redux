@@ -11,8 +11,8 @@ function RegSignIn({ setIsAuth }) {
   const checkUser = (usersArray, existLogin, existPassword) => {
     for (let i = 0; i < usersArray.length; i++) {
       if (
-        usersArray[i].login === existLogin &&
-        usersArray[i].password === existPassword
+        usersArray[i].login == existLogin &&
+        usersArray[i].password == existPassword
       ) {
         usersArray[i].isAuth = true;
         logInfo.users[i] = {

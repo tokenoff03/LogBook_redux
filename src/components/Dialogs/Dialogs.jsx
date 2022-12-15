@@ -1,7 +1,22 @@
 import ds from "./Dialogs.module.css";
 import React from "react";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Dialogs(props) {
+  let currentUser = useSelector((state) => state.usersInfo.currentUser);
+  let logInfo = JSON.parse(localStorage.getItem("logInfo"));
+  if (!logInfo) return <Navigate to="/sign-up" />;
+
+  logInfo.users.forEach((element) => {
+    if (element.isAuth) {
+      currentUser.login = element.login;
+      currentUser.isAuth = element.isAuth;
+    }
+  });
+
+  if (!currentUser.isAuth) return <Navigate to="/sign-in" />;
+
   let newMessageElement = React.createRef();
   let sendMessage = () => {
     props.sendMessage();
