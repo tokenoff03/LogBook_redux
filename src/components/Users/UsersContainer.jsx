@@ -7,7 +7,6 @@ let mapStateToProps = (state) => {
     users: state.usersInfo.users,
   };
 };
-debugger;
 let mapDispatchToProps = (dispatch) => {
   return {
     follow: (userId) => {
