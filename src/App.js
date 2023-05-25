@@ -9,6 +9,7 @@ import { useEffect, useState } from "react"
 import ProfileContainer from "./components/Profile/ProfileContainer"
 import UsersContainer from "./components/Users/UsersContainer"
 
+
 function App() {
     const [isAuth, setIsAuth] = useState(false)
     const logInfo = JSON.parse(localStorage.getItem("logInfo")) || []
@@ -33,6 +34,7 @@ function App() {
                         <Route path="/sign-in" element={<RegSignIn setIsAuth={setIsAuth} />} />
                         <Route path="/sign-up" element={<RegSignUp />} />
                         <Route path="/users" element={<UsersContainer/>}/>
+                        
                     </Routes>
                 </div>
             </div>

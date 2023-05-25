@@ -21,7 +21,6 @@ let mapDispatchToProps = (dispatch) => {
     },
   };
 };
-
 let AuthRedirectComponent = withAuthRedirect(Users);
 export default connect(
   mapStateToProps,
