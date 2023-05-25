@@ -19,9 +19,17 @@ function News(props) {
 
   checkUsers();
   let posts = props.newsPage.posts.map((p) => (
-    <Posts message={p.message} currentUser={currentUser} key={p.id} />
+    <Posts
+      message={p.message}
+      currentUser={currentUser}
+      key={p.id}
+      id={p.id}
+      updatePost={props.updatePost}
+      updateNewMessageText={props.updateNewMessageText}
+      posts={props.newsPage.posts}
+      deletePost={props.deletePost}
+    />
   ));
-
   let newPostElement = React.createRef();
   let addPost = () => {
     props.addPost();
