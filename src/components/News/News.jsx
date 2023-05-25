@@ -17,7 +17,6 @@ function News(props) {
     }
   });
 
-  if (!currentUser.isAuth) return <Navigate to="/sign-in" />;
   checkUsers();
   let posts = props.newsPage.posts.map((p) => (
     <Posts message={p.message} currentUser={currentUser} key={p.id} />

@@ -28,6 +28,10 @@ function RegSignIn({ setIsAuth }) {
     return false;
   };
 
+  const handleKeyUp = (e) => {
+    if (e.key === "Enter") clickButton();
+  };
+
   const clickButton = () => {
     if (logInfo) {
       if (checkUser(logInfo.users, login, password)) {
@@ -54,6 +58,7 @@ function RegSignIn({ setIsAuth }) {
             type="password"
             placeholder={"Пароль"}
             onChange={(e) => setPassword(e.target.value)}
+            onKeyUp={(e) => handleKeyUp(e)}
           />
         </div>
 

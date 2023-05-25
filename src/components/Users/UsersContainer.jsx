@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { FollowAC, setUsersAC, UnFollowAC } from "../../redux/users-reducer";
 import Users from "./Users";
+import { withAuthRedirect } from "../hoc/withAuthRedirect";
 
 let mapStateToProps = (state) => {
   return {
@@ -20,4 +21,9 @@ let mapDispatchToProps = (dispatch) => {
     },
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Users);
+
+let AuthRedirectComponent = withAuthRedirect(Users);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AuthRedirectComponent);
