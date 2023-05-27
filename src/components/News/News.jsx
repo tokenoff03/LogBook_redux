@@ -1,5 +1,5 @@
 import ns from "./News.module.css";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { checkUsers } from "../../redux/users-reducer";

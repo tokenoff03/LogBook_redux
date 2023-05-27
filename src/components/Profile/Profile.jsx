@@ -1,5 +1,16 @@
+import { useEffect } from "react";
 import ps from "./Profile.module.css";
 function Profile(props) {
+  useEffect(() => {
+    // Логика, которую вы хотите выполнить при монтировании компонента
+    alert("DidMounted");
+
+    return () => {
+      alert("Unmounted: Are you sure?");
+      // Логика при размонтировании компонента
+    };
+  }, []);
+
   return (
     <div className={ps.Profile}>
       <div className={ps.container}>

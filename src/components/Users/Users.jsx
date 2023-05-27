@@ -1,10 +1,35 @@
 import us from "./Users.module.css";
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 function Users(props) {
   const [value, setValue] = useState("");
+  const [error, setError] = useState(null);
+  const checkingUpdate = useRef(props);
+
+  useEffect(() => {
+    // Логика, которую вы хотите выполнить при монтировании компонента
+    alert("DidMounted");
+
+    return () => {
+      alert("Unmounted: Are you sure?");
+      // Логика при размонтировании компонента
+    };
+  }, []);
+
+  useEffect(() => {
+    // Логика, которую вы хотите выполнить при обновлении компонента
+    // или изменении определенных свойств или состояний
+    // Например, проверка изменения свойства reviewsPage:
+    if (checkingUpdate.current.users !== props.users) {
+      alert("Updated");
+      // Дополнительная логика при обновлении компонента
+    }
+
+    // Обновляем значение prevPropsRef
+    checkingUpdate.current = props;
+  });
 
   function changeTextInSearch(value) {
     setValue(value);
@@ -30,7 +55,14 @@ function Users(props) {
       .get("https://social-network.samuraijs.com/api/1.0/users")
       .then((response) => {
         props.setUsers(response.data.items);
+      })
+      .catch((error) => {
+        setError(error.message);
       });
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
   }
   return (
     <div className={`${us.containerMain} container`}>
@@ -51,7 +83,7 @@ function Users(props) {
             <div className={us.leftSide}>
               <span className={us.circleImage}>
                 <img
-                  src={u.photos.small != null ? u.phtos.small : `user.png`}
+                  src={u.photos.small != null ? u.photos.small : `user.png`}
                   alt="user"
                 />
               </span>
@@ -63,7 +95,7 @@ function Users(props) {
             </div>
             <div className={us.rightSide}>
               <div className={us.name}>
-                <p>{u.name}</p>
+                <p>Name: {u.name}</p>
               </div>
 
               <div className={us.location}>
@@ -80,7 +112,7 @@ function Users(props) {
               <div className={us.leftSide}>
                 <span className={us.circleImage}>
                   <img
-                    src={u.photos.small != null ? u.phtos.small : `user.png`}
+                    src={u.photos.small != null ? u.photos.small : `user.png`}
                     alt="user"
                   />
                 </span>

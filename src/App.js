@@ -8,7 +8,7 @@ import NewsContainer from "./components/News/NewsContainer"
 import { useEffect, useState } from "react"
 import ProfileContainer from "./components/Profile/ProfileContainer"
 import UsersContainer from "./components/Users/UsersContainer"
-
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
     const [isAuth, setIsAuth] = useState(false)
@@ -27,15 +27,17 @@ function App() {
             <div className="App">
                 <Nav isAuth={isAuth} setIsAuth={setIsAuth} />
                 <div className="body">
-                    <Routes>
-                        <Route path="/" element={<ProfileContainer />} />
-                        <Route path="/dialogs*" element={<DialogsContainer />} />
-                        <Route path="/news" element={<NewsContainer />} />
-                        <Route path="/sign-in" element={<RegSignIn setIsAuth={setIsAuth} />} />
-                        <Route path="/sign-up" element={<RegSignUp />} />
-                        <Route path="/users" element={<UsersContainer/>}/>
-                        
-                    </Routes>
+                    <ErrorBoundary>
+                        <Routes>
+                            <Route path="/" element={<ProfileContainer />} />
+                            <Route path="/dialogs*" element={<DialogsContainer />} />
+                            <Route path="/news" element={<NewsContainer />} />
+                            <Route path="/sign-in" element={<RegSignIn setIsAuth={setIsAuth} />} />
+                            <Route path="/sign-up" element={<RegSignUp />} />
+                            <Route path="/users" element={<UsersContainer/>}/>
+                            
+                        </Routes>
+                    </ErrorBoundary>
                 </div>
             </div>
         </BrowserRouter>

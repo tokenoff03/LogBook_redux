@@ -1,9 +1,18 @@
 import ds from "./Dialogs.module.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function Dialogs(props) {
+  useEffect(() => {
+    // Логика, которую вы хотите выполнить при монтировании компонента
+    alert("DidMounted");
+
+    return () => {
+      alert("Unmounted: Are you sure?");
+      // Логика при размонтировании компонента
+    };
+  }, []);
   let currentUser = useSelector((state) => state.usersInfo.currentUser);
   let logInfo = JSON.parse(localStorage.getItem("logInfo"));
   if (!logInfo) return <Navigate to="/sign-up" />;
