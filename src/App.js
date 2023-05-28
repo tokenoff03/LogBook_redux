@@ -26,12 +26,7 @@ function App() {
             }
         })
     }, [])
-<<<<<<< HEAD
-
-
-=======
     
->>>>>>> adilsProject
     return (
         <BrowserRouter>
             <MyContext.Provider value={{ isAuth, setIsAuth }}>

@@ -10,16 +10,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 localStorage.setItem(
   "logInfo",
   JSON.stringify({
-<<<<<<< HEAD
     users: [{ login: "ad1lek", password: 123123, isAuth: false }],
   })
 );
-=======
-    users: [{ login: "ad1lek", password: 123123, isAuth: true }],
-  })
-);   
-
->>>>>>> adilsProject
 let rerenderEntireTree = ()=> {
   root.render(
     
