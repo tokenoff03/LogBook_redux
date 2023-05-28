@@ -1,10 +1,11 @@
 import ns from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-
-function Nav({ isAuth, setIsAuth }) {
+import { MyContext } from "../../context";
+import { useContext } from "react";
+function Nav(props) {
   let currentUser = useSelector((state) => state.usersInfo.currentUser);
-
+  const { isAuth, setIsAuth } = useContext(MyContext);
   const exitFunc = (event) => {
     let logInfo = JSON.parse(localStorage.getItem("logInfo"));
     for (let i = 0; i < logInfo.users.length; i++) {
@@ -24,7 +25,7 @@ function Nav({ isAuth, setIsAuth }) {
   return (
     <div className={ns.Nav}>
       <div className={ns.container}>
-        <h1 className={ns.title}>LogBook</h1>
+        <h1 className={ns.title}>{props.logoName}</h1>
         <ul className={ns.ul}>
           <NavLink
             to="/"

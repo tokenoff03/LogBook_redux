@@ -25,6 +25,7 @@ let mapStateToProps = (state) => {
     messages: state.dialogsPage.messages.map((p) => (
       <Messages message={p.message} key={p.id} />
     )),
+    dialogsPage: state.dialogsPage,
   };
 };
 

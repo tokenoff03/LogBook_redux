@@ -24,6 +24,7 @@ function News(props) {
       currentUser={currentUser}
       key={p.id}
       id={p.id}
+      newMessageText={props.newsPage.newMessageText}
       updatePost={props.updatePost}
       updateNewMessageText={props.updateNewMessageText}
       posts={props.newsPage.posts}
@@ -52,6 +53,7 @@ function News(props) {
           <textarea
             cols="50"
             rows="5"
+            value={props.newsPage.newPostText}
             ref={newPostElement}
             onChange={onPostChange}
             onKeyUp={(e) => handleKeyUp(e)}

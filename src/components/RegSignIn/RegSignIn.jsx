@@ -1,13 +1,24 @@
 import rs from "./RegSignIn.module.css";
 import ns from "../Nav/Nav.module.css";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Navigate } from "react-router-dom";
 import React, { useState } from "react";
-
+import { useSelector } from "react-redux";
 function RegSignIn({ setIsAuth }) {
   let logInfo = JSON.parse(localStorage.getItem("logInfo"));
+
   const [password, setPassword] = useState();
   const [login, setLogin] = useState();
   let Navig = useNavigate();
+  let currentUser = useSelector((state) => state.usersInfo.currentUser);
+  logInfo.users.forEach((element) => {
+    if (element.isAuth) {
+      currentUser.login = element.login;
+      currentUser.isAuth = element.isAuth;
+    }
+  });
+
+  if (currentUser.isAuth) return <Navigate to="/" />;
+
   const checkUser = (usersArray, existLogin, existPassword) => {
     for (let i = 0; i < usersArray.length; i++) {
       if (

@@ -72,6 +72,7 @@ function Dialogs(props) {
               type="textarea"
               placeholder="Напишите сообщение..."
               ref={newMessageElement}
+              value={props.dialogsPage.newMessageText}
               onChange={onMessageChange}
               onKeyUp={(e) => handleKeyUp(e)}
             />

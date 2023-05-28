@@ -57,6 +57,7 @@ function Posts(props) {
               <input
                 ref={newMessageElement}
                 type="text"
+                value={props.newMessageText}
                 onChange={onTextChange}
                 onKeyUp={(e) => handleKeyUp(e, props.id)}
               />
