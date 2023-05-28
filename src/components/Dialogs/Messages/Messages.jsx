@@ -1,7 +1,7 @@
 import ms from "./Messages.module.css";
-import { useParams } from "react-router-dom";
-import React, { useContext } from "react";
-import { Context } from "./../../../context";
+
+import React from "react";
+
 function Messages(props) {
   return (
     <div className={ms.Messages}>

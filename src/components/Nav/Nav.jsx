@@ -1,11 +1,11 @@
 import ns from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { MyContext } from "../../context";
 import { useContext } from "react";
-import { Context } from "../../context";
-
-function Nav({ isAuth, setIsAuth }) {
-  const { store } = useContext(Context);
-
+function Nav(props) {
+  let currentUser = useSelector((state) => state.usersInfo.currentUser);
+  const { isAuth, setIsAuth } = useContext(MyContext);
   const exitFunc = (event) => {
     let logInfo = JSON.parse(localStorage.getItem("logInfo"));
     for (let i = 0; i < logInfo.users.length; i++) {
@@ -16,17 +16,16 @@ function Nav({ isAuth, setIsAuth }) {
           isAuth: false,
         };
         setIsAuth(false);
-        store.getState().currentUser.isAuth = false;
+        currentUser.isAuth = false;
         localStorage.setItem("logInfo", JSON.stringify(logInfo));
       }
     }
-    store._callSubscriber();
   };
 
   return (
     <div className={ns.Nav}>
       <div className={ns.container}>
-        <h1 className={ns.title}>LogBook</h1>
+        <h1 className={ns.title}>{props.logoName}</h1>
         <ul className={ns.ul}>
           <NavLink
             to="/"
@@ -146,7 +145,7 @@ function Nav({ isAuth, setIsAuth }) {
             </li>
           </NavLink>
           <NavLink
-            to="/friends"
+            to="/users"
             className={(navData) => (navData.isActive ? ns.active : "")}
           >
             <li>
@@ -164,7 +163,7 @@ function Nav({ isAuth, setIsAuth }) {
                   id="mainIconPathAttribute"
                 ></path>{" "}
               </svg>
-              Друзья
+              Пользователи
             </li>
           </NavLink>
 

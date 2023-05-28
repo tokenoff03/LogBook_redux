@@ -3,28 +3,38 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {Context} from "./context";
-import store from "./redux/state";
+import store from "./redux/redux-store";
+import { Provider } from 'react-redux';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 localStorage.setItem(
   "logInfo",
   JSON.stringify({
+<<<<<<< HEAD
     users: [{ login: "ad1lek", password: 123123, isAuth: false }],
   })
 );
+=======
+    users: [{ login: "ad1lek", password: 123123, isAuth: true }],
+  })
+);   
+
+>>>>>>> adilsProject
 let rerenderEntireTree = ()=> {
   root.render(
-    <React.StrictMode>
-      <Context.Provider value={{store}}>
+    
+      <Provider store={store}>
       <App/>
-      </Context.Provider>
-    </React.StrictMode>
+      </Provider>
+    
   );
 }
 rerenderEntireTree();
 
-store.subscribe(rerenderEntireTree);
+store.subscribe(()=>{
+  let state = store.getState();
+  rerenderEntireTree(state);
+});
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

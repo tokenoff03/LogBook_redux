@@ -1,65 +1,52 @@
 import ds from "./Dialogs.module.css";
-import Messages from "./Messages/Messages";
-import Users from "./Users/Users";
-import React from "react";
-import { NavLink, Navigate } from "react-router-dom";
-import { Context } from "./../../context";
-import { useContext } from "react";
-import {
-  sendMessageActionCreater,
-  updateNewMessageTextActionCreater,
-} from "./../../redux/state";
+import React, { useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-function Dialogs() {
-  const { store } = useContext(Context);
+function Dialogs(props) {
+  useEffect(() => {
+    // Логика, которую вы хотите выполнить при монтировании компонента
+    alert("DidMounted");
+
+    return () => {
+      alert("Unmounted: Are you sure?");
+      // Логика при размонтировании компонента
+    };
+  }, []);
+  let currentUser = useSelector((state) => state.usersInfo.currentUser);
   let logInfo = JSON.parse(localStorage.getItem("logInfo"));
   if (!logInfo) return <Navigate to="/sign-up" />;
 
   logInfo.users.forEach((element) => {
     if (element.isAuth) {
-      store.getState().currentUser.login = element.login;
-      store.getState().currentUser.isAuth = element.isAuth;
+      currentUser.login = element.login;
+      currentUser.isAuth = element.isAuth;
     }
   });
 
-  if (!store.getState().currentUser.isAuth) return <Navigate to="/sign-in" />;
-
-  let messages = store._state.dialogsPage.messages.map((p) => (
-    <Messages message={p.message} />
-  ));
+  if (!currentUser.isAuth) return <Navigate to="/sign-in" />;
 
   let newMessageElement = React.createRef();
   let sendMessage = () => {
-    store.dispatch(sendMessageActionCreater());
+    props.sendMessage();
     newMessageElement.current.value = "";
   };
 
   let onMessageChange = (e) => {
     let text = e.target.value;
-    let action = updateNewMessageTextActionCreater(text);
-    store.dispatch(action);
+    props.updateNewMessageText(text);
   };
 
   const handleKeyUp = (e) => {
-    if (e.key == "Enter") sendMessage();
+    if (e.key === "Enter") sendMessage();
   };
 
   return (
     <div className={ds.Dialogs}>
       <div className={`${ds.containerDialogs} container`}>
-        <div className={ds.containerUser}>
-          {store.getState().dialogsPage.usersDialog.map((user) => (
-            <NavLink
-              key={user.id}
-              to={`${user.id}`}
-              className={(navData) => (navData.isActive ? ds.active : "")}
-            >
-              <Users fullName={user.name} />
-            </NavLink>
-          ))}
-        </div>
+        <div className={ds.containerUser}>{props.users}</div>
         <div className={ds.containerMessage}>
-          <div className={ds.messageItems}>{messages}</div>
+          <div className={ds.messageItems}>{props.messages}</div>
 
           <div className={ds.inputBlock}>
             <svg
@@ -85,6 +72,7 @@ function Dialogs() {
               type="textarea"
               placeholder="Напишите сообщение..."
               ref={newMessageElement}
+              value={props.dialogsPage.newMessageText}
               onChange={onMessageChange}
               onKeyUp={(e) => handleKeyUp(e)}
             />

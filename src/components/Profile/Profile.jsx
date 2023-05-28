@@ -1,27 +1,16 @@
+import { useEffect } from "react";
 import ps from "./Profile.module.css";
-import { Context } from "../../context";
-import { useContext } from "react";
-import { Navigate } from "react-router-dom";
+function Profile(props) {
+  useEffect(() => {
+    // Логика, которую вы хотите выполнить при монтировании компонента
+    alert("DidMounted");
 
-function Profile() {
-  const { store } = useContext(Context);
-  let logInfo = JSON.parse(localStorage.getItem("logInfo"));
-  if (!logInfo) return <Navigate to="/sign-up" />;
+    return () => {
+      alert("Unmounted: Are you sure?");
+      // Логика при размонтировании компонента
+    };
+  }, []);
 
-  logInfo.users.forEach((element) => {
-    if (element.isAuth) {
-      store.getState().currentUser.login = element.login;
-      store.getState().currentUser.isAuth = element.isAuth;
-    }
-  });
-
-  if (!store.getState().currentUser.isAuth) return <Navigate to="/sign-in" />;
-  store.checkUsers();
-  let imagesUser = store
-    .getState()
-    .currentUser.images.map((p) => <img src={`./img/${p}`}></img>);
-
-  console.log(imagesUser);
   return (
     <div className={ps.Profile}>
       <div className={ps.container}>
@@ -30,14 +19,14 @@ function Profile() {
             <span className={ps.circleImage}>
               <img
                 className={ps.headerLeftLogo}
-                src={`/img/${store.getState().currentUser.photoProfile}`}
+                src={`/img/${props.currentUser.photoProfile}`}
                 alt="photo"
               />
             </span>
           </div>
           <div className={ps.headerRight}>
             <div className={ps.ProfileName}>
-              <h2>{store.getState().currentUser.login}</h2>
+              <h2>{props.currentUser.login}</h2>
 
               {/*<a className={ps.ProfileEdit}>Редактировать профиль</a>*/}
               {/*<img className={ps.ProfileSetting} width={24} height={24} src="/img/settings.png"/>*/}
@@ -56,7 +45,7 @@ function Profile() {
             </ul>
 
             <div className={ps.ProfileInformation}>
-              <span>{store.getState().currentUser.name}</span>
+              <span>{props.currentUser.name}</span>
               <br />
               <div>
                 IITU'24
@@ -70,7 +59,7 @@ function Profile() {
           </div>
         </div>
       </div>
-      <div className={ps.imagesBlock}>{imagesUser}</div>
+      <div className={ps.imagesBlock}>{props.imagesUser}</div>
     </div>
   );
 }
