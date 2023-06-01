@@ -57,7 +57,33 @@ Connect with localStorage and login. State from Redux -> UsersReducer
 </p>
 
 ### Profile Page:
-Form LocalStorage check currentUser and show
+Form LocalStorage check currentUser and show.
+<br>
+Redux store -> usersReducer -> mainUser for showing Profile page. Created a ready user with pictures.
+let initialState = {
+    currentUser: {
+        login: "",
+        name: "",
+        isAuth: false,
+        photoProfile: "",
+        images: ""
+    },
+    mainUser: [{
+        id: 1,
+        followed: false,
+        login: "ad1lek",
+        name: "Adil Token",
+        location: {city: "Almaty", country: "Kazakshtan"},
+        photoProfile: "ad1lek.jpeg",
+        images: [
+            "adil1.jpeg","adil2.jpeg","adil3.jpeg"
+        ]
+    }],
+    users: [
+        
+    ],
+}
+
 <br>
 <p align="center">
  <img width="600" src="public/assets/profile.png" alt="welcome"/>
