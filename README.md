@@ -60,6 +60,7 @@ Connect with localStorage and login. State from Redux -> UsersReducer
 Form LocalStorage check currentUser and show.
 <br>
 Redux store -> usersReducer -> mainUser for showing Profile page. Created a ready user with pictures.
+
 let initialState = {
     currentUser: {
         login: "",
@@ -73,14 +74,14 @@ let initialState = {
         followed: false,
         login: "ad1lek",
         name: "Adil Token",
-        location: {city: "Almaty", country: "Kazakshtan"},
+        location: {city: "Almaty", country: "Kazakhstan"},
         photoProfile: "ad1lek.jpeg",
         images: [
-            "adil1.jpeg","adil2.jpeg","adil3.jpeg"
+            "adil1.jpeg", "adil2.jpeg", "adil3.jpeg"
         ]
     }],
     users: [
-        
+
     ],
 }
 
