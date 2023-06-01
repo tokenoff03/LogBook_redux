@@ -1,5 +1,6 @@
 This repository contains the website configuration and documentation supporting the React Redux website.
-
+Login: ad1lek
+Password: 123123
 ## Contents
 
 - [Getting started](#%EF%B8%8F-getting-started)
