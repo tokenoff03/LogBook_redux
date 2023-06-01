@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+This repository contains the website configuration and documentation supporting the React Redux website.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Contents
 
-## Available Scripts
+- [Getting started](#%EF%B8%8F-getting-started)
+- [Overview](#-overview)
+- [Screenshots](#-screenshots)
 
-In the project directory, you can run:
 
-### `npm start`
+## ✈️ Getting started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prerequisites
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1.  [Git](https://git-scm.com/downloads).
+1.  [Node](https://nodejs.org/en/download/) _(version 12 or greater)_.
+1.  NPM
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1.  `cd react-native-website` to go into the project root.
+1.  Run `npm` to install the website's workspace dependencies.
 
-### `npm run build`
+### Running locally
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1.  `cd website` to go into the website portion of the project.
+1.  `npm start` to start the development server _(powered by [Docusaurus](https://v2.docusaurus.io))_.
+1.  Open http://localhost:3000/ site in your favorite browser.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📖 Overview
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### The site was created according to these criteria:
+1. Used Functional and Stateful (class-based) components.
+2. LocalStorage for SignIn and SignUp
+3. Manipulated with forms for controlled and uncontrolled components.
+4. Method CRUD. Added Search.
+5. REST HTTP. API tools (Fetch API, axios, etc.). React API components.
+6. Added components for handling API errors.
+7. Lifecycle components.
+8. Used React Patterns, Pass Functions as data sources. Used Render-function and Implemented Clone element.
+9. High-Order-Components.
+10. Context API.
+11. React Routes.
+12. Used React Hooks.
+13. Redux
+14. Action Dispatch
+15. Container Component and Pure Function.
+16. connect(), mapDispatchToProps(), mapStateToProps().
+17. Manage React UI (User Interface) for Redux BLL (Business Logic Layer)
 
-### `npm run eject`
+## 👏 Screenshots
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### WelcomePage:
+Connect with localStorage and login. State from Redux -> UsersReducer
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<p align="center">
+ <img width="600" src="public/assets/login.png" alt="welcome"/>
+</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Profile Page:
+Form LocalStorage check currentUser and show
+<br>
+<p align="center">
+ <img width="600" src="public/assets/profile.png" alt="welcome"/>
+</p>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### News Page:
+In this page we use CRUD. Used Redux BLL (Business Logic Layer)
 
-## Learn More
+<br>
+<p align="center">
+ <img width="600" src="public/assets/news.png" alt="welcome"/>
+</p>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Dialogs Page:
+Used Redux BLL (Business Logic Layer)
+<br>
+<p align="center">
+ <img width="600" src="public/assets/message.png" alt="welcome"/>
+</p>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Users Page:
+Used Redux BLL (Business Logic Layer)
+Using API we took data.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<br>
+<p align="center">
+ <img width="600" src="public/assets/users.png" alt="welcome"/>
+</p>
